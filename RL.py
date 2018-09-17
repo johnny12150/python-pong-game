@@ -9,6 +9,7 @@ from collections import deque  # queue data structure. fast appends. and pops. r
 # hyper params
 ACTIONS = 3  # up,down, stay
 # define our learning rate
+# 學習率會影響network weight在loss gradient
 GAMMA = 0.99
 # for updating our gradient or training over time
 INITIAL_EPSILON = 1.0

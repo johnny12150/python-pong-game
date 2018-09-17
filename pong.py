@@ -1,4 +1,4 @@
-# todo: add AI competitor
+
 import pygame
 
 ### Colors
@@ -88,8 +88,11 @@ def upblnv():
     global p2score
     global p1score
 
+    # 球碰到(left)球拍
     if (bx + bxv < p1x + paddle_width) and ((p1y < by + byv + bw) and (by + byv - bw < p1y + paddle_height)):
+        # 碰撞後反方向
         bxv = -bxv
+        # 反彈後的y座標
         byv = ((p1y + (p1y + paddle_height)) / 2) - by
         byv = -byv / ((5 * bw) / 7)
     elif bx + bxv < 0:
@@ -126,8 +129,23 @@ pygame.display.set_caption('Snake ML v.1.0.0')
 screen.fill(BLACK)
 pygame.display.flip()
 
-running = True
-while running:
+# running = True
+# while running:
+end_it = False
+while (end_it == False):
+    # set the window size
+    window = pygame.display.set_mode((800, 600), 0, 24)
+    window.fill(BLACK)
+    myfont = pygame.font.SysFont("Britannic Bold", 40)
+    nlabel = myfont.render("Welcome & Start Screen", 1, (255, 0, 0))
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            end_it = True
+    window.blit(nlabel, (200, 200))
+    pygame.display.flip()
+
+# while running loop
+while (end_it):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

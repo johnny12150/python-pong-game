@@ -51,6 +51,7 @@ def drawBall(ballXPos, ballYPos):
     pygame.draw.rect(screen, WHITE, ball)
 
 
+# 球拍1
 def drawPaddle1(paddle1YPos):
     # crreate it
     paddle1 = pygame.Rect(PADDLE_BUFFER, paddle1YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
@@ -58,6 +59,7 @@ def drawPaddle1(paddle1YPos):
     pygame.draw.rect(screen, WHITE, paddle1)
 
 
+# 球拍2
 def drawPaddle2(paddle2YPos):
     # create it, opposite side
     paddle2 = pygame.Rect(WINDOW_WIDTH - PADDLE_BUFFER - PADDLE_WIDTH, paddle2YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
