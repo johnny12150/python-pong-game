@@ -1,5 +1,6 @@
-
 import pygame
+import pygameMenu  # This imports classes and other things
+from pygameMenu.locals import *
 
 ### Colors
 WHITE = (255, 255, 255)
