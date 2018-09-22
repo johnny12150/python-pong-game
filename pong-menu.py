@@ -63,7 +63,7 @@ def uploc():
     global p2y
     if w_p:
         if p1y - (dm) < 0:
-            py1 = 0
+            p1y = 0
         else:
             p1y -= dm
     elif s_p:
@@ -176,14 +176,6 @@ def mainmenu_background():
     """
     surface.fill((40, 0, 40))
 
-
-def reset_timer():
-    """
-    Reset timer
-    """
-    timer[0] = 0
-
-
 def change_color_bg(c, **kwargs):
     """
     Change background color
@@ -197,6 +189,70 @@ def change_color_bg(c, **kwargs):
     COLOR_BACKGROUND[0] = c[0]
     COLOR_BACKGROUND[1] = c[1]
     COLOR_BACKGROUND[2] = c[2]
+
+
+def start_multi_player_mode(RUNNING):
+    # print(RUNNING[0])
+    while (RUNNING):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                RUNNING = False
+                exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    RUNNING = False
+                    menu.enable()
+                if event.key == pygame.K_w:
+                    w_p = True
+                    if s_p == True:
+                        s_p = False
+                        wsr = True
+                if event.key == pygame.K_s:
+                    s_p = True
+                    if w_p == True:
+                        w_p = False
+                        wsr = True
+                if event.key == pygame.K_UP:
+                    u_p = True
+                    if d_p == True:
+                        d_p = False
+                        udr = True
+                if event.key == pygame.K_DOWN:
+                    d_p = True
+                    if u_p == True:
+                        u_p = False
+                        udr = True
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_w:
+                    w_p = False
+                    if wsr == True:
+                        s_p = True
+                        wsr = False
+                if event.key == pygame.K_s:
+                    s_p = False
+                    if wsr == True:
+                        w_p = True
+                        wsr = False
+                if event.key == pygame.K_UP:
+                    u_p = False
+                    if udr == True:
+                        d_p = True
+                        udr = False
+                if event.key == pygame.K_DOWN:
+                    d_p = False
+                    if udr == True:
+                        u_p = True
+                        udr = False
+
+        screen.fill(BLACK)
+        uploc()
+        upblnv()
+        drawscore()
+        drawball(bx, by)
+        drawpaddle(p1x, p1y, paddle_width, paddle_height)
+        drawpaddle(p2x, p2y, paddle_width, paddle_height)
+        pygame.display.flip()
+        pygame.time.wait(wt)
 
 
 # -----------------------------------------------------------------------------
@@ -215,19 +271,26 @@ timer_menu = pygameMenu.Menu(surface,
                              window_height=H_SIZE,
                              window_width=W_SIZE
                              )
-timer_menu.add_option('Reset timer', reset_timer)
 
 # Adds a selector (element that can handle functions)
-timer_menu.add_selector('Change bgcolor',
-                        # Values of selector, call to change_color_bg
-                        [('Random', (-1, -1, -1)),
-                         ('Default', (128, 0, 128)),
-                         ('Black', (0, 0, 0)),
-                         ('Blue', COLOR_BLUE)],
+# timer_menu.add_selector('Change bgcolor',
+#                         # Values of selector, call to change_color_bg
+#                         [('Random', (-1, -1, -1)),
+#                          ('Default', (128, 0, 128)),
+#                          ('Black', (0, 0, 0)),
+#                          ('Blue', COLOR_BLUE)],
+#                         onchange=None,  # Action when changing element with left/right
+#                         onreturn=change_color_bg,  # Action when pressing return on a element
+#                         default=1,  # Optional parameter that sets default item of selector
+#                         write_on_console=True  # Optional parametrs to change_color_bg function
+#                         )
+
+# pass value to function
+timer_menu.add_selector('Multi player mode',
+                        [('RUNNING', True)],
                         onchange=None,  # Action when changing element with left/right
-                        onreturn=change_color_bg,  # Action when pressing return on a element
-                        default=1,  # Optional parameter that sets default item of selector
-                        write_on_console=True  # Optional parametrs to change_color_bg function
+                        onreturn=start_multi_player_mode,  # Action when pressing return on a element
+                        default=1  # Optional parameter that sets default item of selector
                         )
 timer_menu.add_option('Return to Menu', PYGAME_MENU_BACK)
 timer_menu.add_option('Close Menu', PYGAME_MENU_CLOSE)
@@ -284,11 +347,13 @@ menu.add_option(timer_menu.get_title(), timer_menu)  # Add timer submenu
 menu.add_option(help_menu.get_title(), help_menu)  # Add help submenu
 menu.add_option(about_menu.get_title(), about_menu)  # Add about submenu
 menu.add_option('Exit', PYGAME_MENU_EXIT)  # Add exit function
+# add a tab for multi player
+menu.add_option('Multi Player Mode', start_multi_player_mode)
 
 # -----------------------------------------------------------------------------
 
-end_it = False
-while (end_it == False):
+running = False
+while (running == False):
     # Paint background
     surface.fill(COLOR_BACKGROUND)
     menu.enable()
@@ -298,11 +363,10 @@ while (end_it == False):
     for event in events:
         if event.type == pygame.QUIT:
             exit()
-            # end_it = True
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                end_it = True
-                # menu.enable()
+                # running = True
+                menu.enable()
 
     # Execute main from principal menu if is enabled
     menu.mainloop(events)
@@ -311,7 +375,7 @@ while (end_it == False):
     pygame.display.flip()
 
 # while running loop
-while (end_it):
+while (running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

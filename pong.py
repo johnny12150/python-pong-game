@@ -1,6 +1,6 @@
+# 雙人模式與自製menu
+
 import pygame
-import pygameMenu  # This imports classes and other things
-from pygameMenu.locals import *
 
 ### Colors
 WHITE = (255, 255, 255)
@@ -61,7 +61,7 @@ def uploc():
     global p2y
     if w_p:
         if p1y - (dm) < 0:
-            py1 = 0
+            p1y = 0
         else:
             p1y -= dm
     elif s_p:
@@ -119,9 +119,10 @@ def upblnv():
     by += byv
 
 
+# todo: let score center
 def drawscore():
     score = comic.render(str(p1score) + " - " + str(p2score), False, WHITE)
-    screen.blit(score, (W / 2, 30))
+    screen.blit(score, ((W - score.get_width()) / 2, 30))
 
 
 ### Initialize
@@ -135,15 +136,19 @@ pygame.display.flip()
 end_it = False
 while (end_it == False):
     # set the window size
-    window = pygame.display.set_mode((800, 600), 0, 24)
+    window = pygame.display.set_mode((W, H))
     window.fill(BLACK)
     myfont = pygame.font.SysFont("Britannic Bold", 40)
+    # label text and color
     nlabel = myfont.render("Welcome & Start Screen", 1, (255, 0, 0))
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             end_it = True
-    window.blit(nlabel, (200, 200))
+    # label position, make sure it is at the center of the window
+    window.blit(nlabel, ((W - nlabel.get_width()) / 2, (H - nlabel.get_height()) / 2))
     pygame.display.flip()
+
+print(W, nlabel.get_width())
 
 # while running loop
 while (end_it):

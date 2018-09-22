@@ -151,7 +151,7 @@ class PongGame:
         num = random.randint(0, 9)
         # keep score
         self.tally = 0
-        # initialie positions of paddle
+        # initialize positions of paddle
         self.paddle1YPos = WINDOW_HEIGHT / 2 - PADDLE_HEIGHT / 2
         self.paddle2YPos = WINDOW_HEIGHT / 2 - PADDLE_HEIGHT / 2
         # and ball direction

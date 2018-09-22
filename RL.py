@@ -82,7 +82,7 @@ def trainGraph(inp, out, sess):
     # create a queue for experience replay to store policies
     D = deque()
 
-    # intial frame
+    # initial frame
     frame = game.getPresentFrame()
     # convert rgb to gray scale for processing
     frame = cv2.cvtColor(cv2.resize(frame, (84, 84)), cv2.COLOR_BGR2GRAY)
@@ -119,6 +119,7 @@ def trainGraph(inp, out, sess):
         # reward tensor if score is positive
         reward_t, frame = game.getNextFrame(argmax_t)
         # get frame pixel data
+        # 取得每個frame的資料
         frame = cv2.cvtColor(cv2.resize(frame, (84, 84)), cv2.COLOR_BGR2GRAY)
         ret, frame = cv2.threshold(frame, 1, 255, cv2.THRESH_BINARY)
         frame = np.reshape(frame, (84, 84, 1))
