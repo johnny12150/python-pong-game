@@ -110,7 +110,8 @@ def Solo(RUNNING):
                 if event.type == pygame.QUIT:
                     exit()
                 # if pressed[pygame.K_ESCAPE]:
-                #     home()
+                #     menu.enable()
+                # home()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_BACKSPACE and pause == False:
                         pause_xv = ball_xv
