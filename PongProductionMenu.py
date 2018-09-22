@@ -79,12 +79,20 @@ if __name__ == "__main__":
                                  window_width=W_SIZE
                                  )
 
-    # timer_menu.add_selector('Solo Mode', PongProductionModes.Solo(), onchange=None, onreturn=None)
     timer_menu.add_selector('Mode',
                             [('Solo', True)],
                             onchange=None,  # Action when changing element with left/right
-                            onreturn=PongProductionModes.Solo,  # Action when pressing return on a element
-                            default=1  # Optional parameter that sets default item of selector
+                            onreturn=PongProductionModes.Solo
+                            )
+    timer_menu.add_selector('Mode',
+                            [('Duo', True)],
+                            onchange=None,  # Action when changing element with left/right
+                            onreturn=PongProductionModes.Multi
+                            )
+    timer_menu.add_selector('Mode',
+                            [('AI', True)],
+                            onchange=None,  # Action when changing element with left/right
+                            onreturn=PongProductionModes.AI
                             )
     timer_menu.add_option('Return to Menu', PYGAME_MENU_BACK)
     timer_menu.add_option('Close Menu', PYGAME_MENU_CLOSE)
@@ -124,7 +132,6 @@ if __name__ == "__main__":
     menu.add_option(timer_menu.get_title(), timer_menu)  # Add timer submenu
     menu.add_option(about_menu.get_title(), about_menu)  # Add about submenu
     menu.add_option('Exit', PYGAME_MENU_EXIT)  # Add exit function
-    # menu.add_option('Multi', PongProductionModes.home())
 
     # -----------------------------------------------------------------------------
 
