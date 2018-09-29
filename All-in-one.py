@@ -35,8 +35,11 @@ def Solo(RUNNING):
     # ball globals, xv, yv max is 20
     ball_x = int(screen_width / 2)
     ball_y = int(screen_height / 2)
-    ball_xv = random.choice([5, -5])
-    ball_yv = random.choice([5, -5])
+    # ball_xv = random.choice([5, -5])
+    # ball_yv = random.choice([5, -5])
+    # for mac
+    ball_xv = random.choice([20, -20])
+    ball_yv = random.choice([20, -20])
     ball_r = 10
     rand1 = 50
 
@@ -74,14 +77,14 @@ def Solo(RUNNING):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
-            # if pressed[pygame.K_ESCAPE]:
-            #     RUNNING = False
-            #     menu.enable()
+            if pressed[pygame.K_ESCAPE]:
+                RUNNING = False
+                menu.enable()
             #     print('menu')
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    RUNNING = False
-                    menu.enable()
+                # if event.key == pygame.K_ESCAPE:
+                #     RUNNING = False
+                #     menu.enable()
                 if event.key == pygame.K_BACKSPACE and pause == False:
                     pause_xv = ball_xv
                     pause_yv = ball_yv
@@ -343,7 +346,6 @@ def Multi(RUNNING):
 
 
 def AI(RUNNING):
-    # while (RUNNING):
     # initialize pygame
     pygame.init()
     global TimesCount
@@ -577,7 +579,7 @@ if __name__ == "__main__":
                                  menu_alpha=85,
                                  menu_color=(0, 0, 0),  # Background color
                                  menu_color_title=(0, 0, 0),
-                                 menu_height=int(H_SIZE / 2),
+                                 menu_height=int(H_SIZE / 2 + 50),
                                  menu_width=600,
                                  onclose=PYGAME_MENU_RESET,  # If this menu closes (press ESC) back to main
                                  title='Game Modes',
@@ -602,7 +604,7 @@ if __name__ == "__main__":
                             onreturn=AI
                             )
     timer_menu.add_option('Return to Menu', PYGAME_MENU_BACK)
-    timer_menu.add_option('Close Menu', PYGAME_MENU_CLOSE)
+    timer_menu.add_option('Close', PYGAME_MENU_CLOSE)
 
     # -----------------------------------------------------------------------------
     # About menu
