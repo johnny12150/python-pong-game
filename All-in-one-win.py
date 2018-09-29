@@ -537,7 +537,7 @@ if __name__ == "__main__":
     HELP = ['Press ESC to enable/disable Menu',
             'Press ENTER to access a Sub-Menu or use an option',
             'Press UP/DOWN to move through Menu',
-            'Press BackSpace to pause']
+            'Press BACKSPACE to pause']
     W_SIZE = 800  # Width of window size
 
     # -----------------------------------------------------------------------------
