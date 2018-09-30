@@ -14,6 +14,12 @@ def Solo(RUNNING):
     # initialize pygame
     pygame.init()
     global TimesCount
+    pic = '1.png' 
+    pic2 = '2.png'
+    pic3 = '3.png'
+    background = pygame.image.load(pic).convert()
+    paddle_1 = pygame.image.load(pic2).convert()
+    paddle_2 = pygame.image.load(pic3).convert()
     # color globals
     red = (255, 0, 0)
     orange = (255, 127, 0)
@@ -53,7 +59,7 @@ def Solo(RUNNING):
     paddle1_goal = 300
 
     # draw paddle 2
-    paddle2_x = screen_width - 20
+    paddle2_x = screen_width - 40
     paddle2_y = int(screen_height / 2)
     paddle2_w = 10
     paddle2_h = 100
@@ -133,7 +139,7 @@ def Solo(RUNNING):
 
         # collision of ball and paddles
         # left paddle
-        if ball_x < paddle1_x + paddle1_w + ball_r and ball_y >= paddle1_y and ball_y <= paddle1_y + paddle1_h:
+        if ball_x < paddle1_x + paddle1_w + ball_r + 30 and ball_y >= paddle1_y and ball_y <= paddle1_y + paddle1_h:
             rand1 = random.choice(
                 [random.randint(10, 30), random.randint(70, 90)])
             ball_xv = abs(ball_xv)
@@ -164,12 +170,15 @@ def Solo(RUNNING):
             ball_x = int(screen_width / 2)
             ball_y = int(screen_height / 2)
 
-        game_screen.fill(black)
+#         game_screen.fill(black)
+        game_screen.blit(background,(0,0))
+        game_screen.blit(paddle_1,(paddle1_x, paddle1_y))
+        game_screen.blit(paddle_2,(paddle2_x, paddle2_y))
         frame = pygame.draw.rect(game_screen, (255, 255, 255), (5, 5, 790, 590), 2)
-        paddle_1 = pygame.draw.rect(
-            game_screen, blue, (paddle1_x, paddle1_y, paddle1_w, paddle1_h), 0)
-        paddle_2 = pygame.draw.rect(
-            game_screen, red, (paddle2_x, paddle2_y, paddle2_w, paddle2_h), 0)
+#         paddle_1 = pygame.draw.rect(
+#             game_screen, blue, (paddle1_x, paddle1_y, paddle1_w, paddle1_h), 0)
+#         paddle_2 = pygame.draw.rect(
+#             game_screen, red, (paddle2_x, paddle2_y, paddle2_w, paddle2_h), 0)
         net = pygame.draw.aaline = pygame.draw.line(game_screen, white, (int(
             screen_width / 2), 5), (int(screen_width / 2), 595))
         ball = pygame.draw.circle(
@@ -189,7 +198,12 @@ def Multi(RUNNING):
     # initialize pygame
     pygame.init()
     global TimesCount
-
+    pic = '1.png' 
+    pic2 = '2.png'
+    pic3 = '3.png'
+    background = pygame.image.load(pic).convert()
+    paddle_1 = pygame.image.load(pic2).convert()
+    paddle_2 = pygame.image.load(pic3).convert()
     # color globals
     red = (255, 0, 0)
     orange = (255, 127, 0)
@@ -225,7 +239,7 @@ def Multi(RUNNING):
     paddle1_h = 100
 
     # draw paddle 2
-    paddle2_x = screen_width - 20
+    paddle2_x = screen_width - 40
     paddle2_y = int(screen_height / 2)
     paddle2_w = 10
     paddle2_h = 100
@@ -295,7 +309,7 @@ def Multi(RUNNING):
 
         # collision of ball and paddles
         # left paddle
-        if ball_x < paddle1_x + paddle1_w + ball_r and ball_y >= paddle1_y and ball_y <= paddle1_y + paddle1_h:
+        if ball_x < paddle1_x + paddle1_w + ball_r + 30 and ball_y >= paddle1_y and ball_y <= paddle1_y + paddle1_h:
             ball_xv = abs(ball_xv)
             ball_yv = int(
                 ((paddle1_y + (paddle1_y + paddle1_h)) / 2) - ball_y) * 2
@@ -322,12 +336,15 @@ def Multi(RUNNING):
             ball_x = int(screen_width / 2)
             ball_y = int(screen_height / 2)
 
-        game_screen.fill(black)
+#         game_screen.fill(black)
+        game_screen.blit(background,(0,0))
+        game_screen.blit(paddle_1,(paddle1_x, paddle1_y))
+        game_screen.blit(paddle_2,(paddle2_x, paddle2_y))
         frame = pygame.draw.rect(game_screen, (255, 255, 255), (5, 5, 790, 590), 2)
-        paddle_1 = pygame.draw.rect(
-            game_screen, blue, (paddle1_x, paddle1_y, paddle1_w, paddle1_h), 0)
-        paddle_2 = pygame.draw.rect(
-            game_screen, red, (paddle2_x, paddle2_y, paddle2_w, paddle2_h), 0)
+#         paddle_1 = pygame.draw.rect(
+#             game_screen, blue, (paddle1_x, paddle1_y, paddle1_w, paddle1_h), 0)
+#         paddle_2 = pygame.draw.rect(
+#             game_screen, red, (paddle2_x, paddle2_y, paddle2_w, paddle2_h), 0)
         net = pygame.draw.line(game_screen, white, (int(
             screen_width / 2), 5), (int(screen_width / 2), 595))
         ball = pygame.draw.circle(
@@ -347,7 +364,12 @@ def AI(RUNNING):
     # initialize pygame
     pygame.init()
     global TimesCount
-
+    pic = '1.png' 
+    pic2 = '2.png'
+    pic3 = '3.png'
+    background = pygame.image.load(pic).convert()
+    paddle_1 = pygame.image.load(pic2).convert()
+    paddle_2 = pygame.image.load(pic3).convert()
     # color globals
     red = (255, 0, 0)
     orange = (255, 127, 0)
@@ -385,7 +407,7 @@ def AI(RUNNING):
     paddle1_goal = 300
 
     # draw paddle 2
-    paddle2_x = screen_width - 20
+    paddle2_x = screen_width - 40
     paddle2_y = int(screen_height / 2)
     paddle2_w = 10
     paddle2_h = 100
@@ -461,7 +483,7 @@ def AI(RUNNING):
 
         # collision of ball and paddles
         # left paddle
-        if ball_x < paddle1_x + paddle1_w + ball_r and ball_y >= paddle1_y and ball_y <= paddle1_y + paddle1_h:
+        if ball_x < paddle1_x + paddle1_w + ball_r + 30 and ball_y >= paddle1_y and ball_y <= paddle1_y + paddle1_h:
             rand1 = random.choice(
                 [random.randint(10, 30), random.randint(70, 90)])
             ball_xv = abs(ball_xv)
@@ -492,12 +514,15 @@ def AI(RUNNING):
             ball_x = int(screen_width / 2)
             ball_y = int(screen_height / 2)
 
-        game_screen.fill(black)
+#         game_screen.fill(black)
+        game_screen.blit(background,(0,0))
+        game_screen.blit(paddle_1,(paddle1_x, paddle1_y))
+        game_screen.blit(paddle_2,(paddle2_x, paddle2_y))
         frame = pygame.draw.rect(game_screen, (255, 255, 255), (5, 5, 790, 590), 2)
-        paddle_1 = pygame.draw.rect(
-            game_screen, blue, (paddle1_x, paddle1_y, paddle1_w, paddle1_h), 0)
-        paddle_2 = pygame.draw.rect(
-            game_screen, red, (paddle2_x, paddle2_y, paddle2_w, paddle2_h), 0)
+#         paddle_1 = pygame.draw.rect(
+#             game_screen, blue, (paddle1_x, paddle1_y, paddle1_w, paddle1_h), 0)
+#         paddle_2 = pygame.draw.rect(
+#             game_screen, red, (paddle2_x, paddle2_y, paddle2_w, paddle2_h), 0)
         net = pygame.draw.line(game_screen, white, (int(
             screen_width / 2), 5), (int(screen_width / 2), 595))
         ball = pygame.draw.circle(
