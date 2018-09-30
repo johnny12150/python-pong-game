@@ -6,6 +6,8 @@ import pygameMenu  # This imports classes and other things
 from pygameMenu.locals import *
 import os
 
+# 細節請參考：https://github.com/johnny12150/python-pong-game
+
 TimesCount = 0
 
 
