@@ -14,9 +14,9 @@ def Solo(RUNNING):
     # initialize pygame
     pygame.init()
     global TimesCount
-    pic = '1.png' 
-    pic2 = '2.png'
-    pic3 = '3.png'
+    pic = 'image/1.png' 
+    pic2 = 'image/2.png'
+    pic3 = 'image/3.png'
     background = pygame.image.load(pic).convert()
     paddle_1 = pygame.image.load(pic2).convert()
     paddle_2 = pygame.image.load(pic3).convert()
@@ -198,9 +198,9 @@ def Multi(RUNNING):
     # initialize pygame
     pygame.init()
     global TimesCount
-    pic = '1.png' 
-    pic2 = '2.png'
-    pic3 = '3.png'
+    pic = 'image/1.png' 
+    pic2 = 'image/2.png'
+    pic3 = 'image/3.png'
     background = pygame.image.load(pic).convert()
     paddle_1 = pygame.image.load(pic2).convert()
     paddle_2 = pygame.image.load(pic3).convert()
@@ -364,9 +364,9 @@ def AI(RUNNING):
     # initialize pygame
     pygame.init()
     global TimesCount
-    pic = '1.png' 
-    pic2 = '2.png'
-    pic3 = '3.png'
+    pic = 'image/1.png' 
+    pic2 = 'image/2.png'
+    pic3 = 'image/3.png'
     background = pygame.image.load(pic).convert()
     paddle_1 = pygame.image.load(pic2).convert()
     paddle_2 = pygame.image.load(pic3).convert()
